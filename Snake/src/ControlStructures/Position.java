@@ -23,6 +23,5 @@ public class Position
 			return "O";
 		}
 	}
-		
 
 }
