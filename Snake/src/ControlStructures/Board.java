@@ -1,9 +1,22 @@
 package ControlStructures;
 
 public class Board {
-
-	public Board() {
-		// TODO Auto-generated constructor stub
+	private Position[][] space;
+	public Board(Position[][] space) 
+	{
+		this.space=space;
+	}
+	
+	public void printBoard()
+	{
+		for(Position[] g : this.space)
+		{
+			for(Position p : g)
+			{
+				System.out.print(p.printPosition());
+			}
+			System.out.println();
+		}
 	}
 
 }
