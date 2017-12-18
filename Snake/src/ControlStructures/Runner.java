@@ -1,8 +1,9 @@
 package ControlStructures;
-
+import java.util.Scanner;
 public class Runner {
 	Board B = newBoard(9,9);
-	
+	Scanner in = new Scanner(System.in);
+	String move = in;
 	public static void main(String args)
 	{
 		
