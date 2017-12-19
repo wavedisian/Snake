@@ -18,5 +18,12 @@ public class Board {
 			System.out.println();
 		}
 	}
-
+	public int length()
+	{
+		return (this.space[0]).length;
+	}
+	public int height()
+	{
+		return (this.space).length;
+	}
 }
