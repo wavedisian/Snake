@@ -29,4 +29,12 @@ public class Runner {
 		Board board = new Board(p);
 		return board;
 	}
+	
+	public static int indexPosition(Position j, Position[] k )
+	{
+		for(int i = 0; i<k.length; i++)
+		{
+			if
+		}
+	}
 }
