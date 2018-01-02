@@ -26,6 +26,10 @@ public class Runner {
 	public static Board newBoard(int x, int y)
 	{
 		Position[][] p = new Position[x][y];
+		for(int iy = 0; iy<p.length; iy++)
+		{
+			for(int ix = 0; ix<)
+		}
 		Board board = new Board(p);
 		return board;
 	}
@@ -34,7 +38,11 @@ public class Runner {
 	{
 		for(int i = 0; i<k.length; i++)
 		{
-			if
+			if((j.getLocation()[0]==k[i].getLocation()[0])&&(j.getLocation()[1]==k[i].getLocation()[1]))
+					{
+						return i;
+					}
 		}
+		return -1;
 	}
 }

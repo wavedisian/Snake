@@ -11,12 +11,22 @@ public class Body {
 	{
 		if(validMove(move))
 		{
-			
+			Position[] newpos = new Position[this.p.length + 1];
+			if(move.equals("a"))
+			{
+				newpos[0] = new Position(this.p[0].getLocation()[0], this.p[0].getLocation()[1] - 1);
+				for(int i=0; i<newpos.length; i++)
+				{
+					newpos[i+1]=this.p[i];
+				}
+				this.p=newpos;
+				
+			}
 		}
 	}
 	public boolean validMove(String move)
 	{
-		if(((p.getLocation()[0]==0)&&(move.equals("a")))||((p.getLocation()[0]==B.length)&&(move.equals("d")))
+		if(move.equals("w")&&(this.p[0].getLocation()[1]))
 		{
 			System.out.println();
 		}
