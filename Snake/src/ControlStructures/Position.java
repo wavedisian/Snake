@@ -9,17 +9,6 @@ public class Position
 		this.x=x;
 		this.y=y;
 	}
-	public boolean callPosition(int a, int b)
-	{
-		if((a==this.x)&&(b==this.y))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 	public int[] getLocation()
 	{
 		int[] g = new int[2];

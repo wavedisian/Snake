@@ -45,4 +45,5 @@ public class Runner {
 		}
 		return -1;
 	}
+	public static boolean isFull(Position j, Position)
 }

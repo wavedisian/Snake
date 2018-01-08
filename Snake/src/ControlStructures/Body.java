@@ -50,7 +50,7 @@ public class Body {
 			}
 		}
 	}
-	public boolean validMove(String move, Board g)
+	public boolean validMove(String move, Board g, Body head)
 	{
 		if(move.equals("w")&&(this.p[0].getLocation()[1]==0))
 		{
@@ -68,6 +68,6 @@ public class Body {
 		{
 			return false;
 		}
-		if(move.equals("w")
+		if(move.equals("w")&&(head[1].getLocation
 	}
 }

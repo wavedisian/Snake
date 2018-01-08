@@ -26,4 +26,8 @@ public class Board {
 	{
 		return (this.space).length;
 	}
+	public void fillBoard(Board  b)
+	{
+		
+	}
 }
