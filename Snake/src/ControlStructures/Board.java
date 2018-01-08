@@ -13,7 +13,7 @@ public class Board {
 		{
 			for(Position p : g)
 			{
-				System.out.print(p.printPosition());
+				System.out.print(p.printLocation());
 			}
 			System.out.println();
 		}
