@@ -41,7 +41,7 @@ public class Runner {
 	{
 		for(int i = 0; i<k.length; i++)
 		{
-			if((j.getLocation()[0]==k[i].getLocation()[0])&&(j.getLocation()[1]==k[i].getLocation()[1]))
+			if((j.getX()==k[i].getX())&&(j.getY()==k[i].getY()))
 					{
 						return i;
 					}

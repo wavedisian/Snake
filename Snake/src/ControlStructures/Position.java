@@ -18,12 +18,38 @@ public class Position
 		g[1] = this.y;
 		return g;
 	}
-	public String printLocation()
+	public void printPosition()
 	{
-		return ("x=" + this.x + " y=" + this.y);
+		if((this.spawn)||()
+		{
+			System.out.print("[O]");
+		}
+		else
+		{
+			System.out.print("[ ]");
+		}
 	}
 	public boolean isSpawn()
 	{
 		return this.spawn;
+	}
+	public int getX()
+	{
+		return this.x;
+	}
+	public int getY()
+	{
+		return this.y;
+	}
+	public int indexPosition(Position[] k)
+	{
+		for(int i = 0; i<k.length; i++)
+		{
+			if((this.x==k[i].getX())&&(this.y==k[i].getY()))
+					{
+						return i;
+					}
+		}
+		return -1;
 	}
 }
