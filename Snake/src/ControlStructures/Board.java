@@ -30,4 +30,8 @@ public class Board {
 	{
 		
 	}
+	public Position[][] getBoard()
+	{
+		return this.space;
+	}
 }

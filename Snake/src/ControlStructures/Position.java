@@ -18,9 +18,9 @@ public class Position
 		g[1] = this.y;
 		return g;
 	}
-	public void printPosition()
+	public void printPosition(Body b)
 	{
-		if((this.spawn)||()
+		if((isSpawn())||(indexPosition(b.getPositions())>-1))
 		{
 			System.out.print("[O]");
 		}
