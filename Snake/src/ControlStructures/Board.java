@@ -7,13 +7,13 @@ public class Board {
 		this.space=space;
 	}
 	
-	public void printBoard()
+	public void printBoard(Body b)
 	{
 		for(Position[] g : this.space)
 		{
 			for(Position p : g)
 			{
-				System.out.print(p.printLocation());
+				p.printPosition(b);
 			}
 			System.out.println();
 		}

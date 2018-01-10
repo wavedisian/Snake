@@ -1,26 +1,36 @@
 package ControlStructures;
 import java.util.Scanner;
 public class Runner {
-	public static void main(String args)
+	public static void main(String[] args)
 	{
+		String call = "";
 		Scanner in = new Scanner(System.in);
-		String call = in.nextLine();
-		call = call.toLowerCase();
 		while(!call.equals("end game"))
 		{
 			System.out.println( 
-					"Welcome to Snake V 1.0.0. In this game you play as a snake whose goal is to eat as much as possible. You start small as"
-    				+ " just a head, but quickly you eat and grow. Be warned! This snake is posionous to himself, and will lose if he touches his body."
-					+ " The snake moves by standard WASD motion. To stop at any point, simply type exit."
-					+ " Please enter a board size and prepare to play."
+					"Welcome to Snake V 1.0.0. In this game you play as a snake whose goal is to eat as much as possible. You start small as\n"
+    				+ " just a head, but quickly you eat and grow. Be warned! This snake is posionous to himself, and will lose if he touches his body.\n"
+					+ " The snake moves by standard WASD motion. To stop at any point, simply type exit.\n"
+					+ " Please enter a board size (ONLY ENTER AN INTEGER VALUE) and prepare to play."
 						           );
-			
-			Board game = newBoard(call, call);
-			
-		
+			Position[] p = new Position[1];
+			p[0] = new Position(0, 0, false);
+			int size = in.nextInt();
+			in.nextLine(); //remove hanging new line
+			Board game = newBoard(size, size);
+			Body b = new Body(p);
+			System.out.println("Type play when you are ready to begin. Type end game to end at any time.. Good luck!");
+			while(!call.equals("end game"))
+					{
+				        game.printBoard(b);
+						call = in.nextLine();
+				        b.moveBody(call, game);
+						game.printBoard(b);
+					}
 		
 		
 		}
+		in.close();
 	}
 	
 	public static Board newBoard(int x, int y)
@@ -47,9 +57,5 @@ public class Runner {
 					}
 		}
 		return -1;
-	}
-	public static boolean isFull(Position j, Position[] ar)
-	{
-		
 	}
 }

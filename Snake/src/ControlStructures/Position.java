@@ -52,4 +52,12 @@ public class Position
 		}
 		return -1;
 	}
+	public void setSpawn()
+	{
+		this.spawn = true;
+	}
+	public void deSpawn()
+	{
+		this.spawn = false;
+	}
 }

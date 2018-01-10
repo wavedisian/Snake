@@ -8,50 +8,61 @@ public class Body {
 		this.p=p;
 	}
 	
-	public void moveBody(String move, Board game, Body b)
+	public void moveBody(String move, Board game)
 	{
-		if(validMove(move, game, b)) {
+		if(validMove(move, game)) {
 		if(move.equals("a"))
 		{
-			Position nextmove = new Position(game.getBoard()[b.getPositions()[0].getX()-1][b.getPositions()[0].getY()].getX(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].getY(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].isSpawn());
+			this.nextMove = new Position(game.getBoard()[this.p[0].getX()-1][this.p[0].getY()].getX(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()].getY(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()].isSpawn());
 		}
 		if(move.equals("d"))
 		{
-			Position nextmove = new Position(game.getBoard()[b.getPositions()[0].getX()+1][b.getPositions()[0].getY()].getX(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].getY(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].isSpawn());
+			this.nextMove = new Position(game.getBoard()[this.p[0].getX()+1][this.p[0].getY()].getX(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()].getY(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()].isSpawn());
 		}	
 		if(move.equals("w"))
 		{
-			Position nextmove = new Position(game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].getX(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()+1].getY(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].isSpawn());
+			this.nextMove = new Position(game.getBoard()[this.p[0].getX()][this.p[0].getY()].getX(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()+1].getY(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()].isSpawn());
 		}	
 		if(move.equals("s"))
 		{
-			Position nextmove = new Position(game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].getX(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()-1].getY(), 
-				game.getBoard()[b.getPositions()[0].getX()][b.getPositions()[0].getY()].isSpawn());
+			this.nextMove = new Position(game.getBoard()[this.p[0].getX()][this.p[0].getY()].getX(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()-1].getY(), 
+				game.getBoard()[this.p[0].getX()][this.p[0].getY()].isSpawn());
 		}	
-		if(nextMove.isSpawn())
+		if(this.nextMove.isSpawn())
 		{	
 			Position[] newpos = new Position[this.p.length+1];
 			
-			{
-				for(int i = this.p.length; i>0; i++)
+				for(int i = 0; i<this.p.length; i++)
 				{
-					newpos[i]=this.p[i-1];
+					newpos[i+1]=this.p[i];
+				}
+				newpos[0] = this.nextMove;
+				this.p=newpos;
+			
+		}
+		if(!this.nextMove.isSpawn())
+		{
+			 Position[] newpos = new Position[this.p.length];
+			
+				for(int i = 0; i<this.p.length-1; i++)
+				{
+					newpos[i+1] = this.p[i];
 				}
 				newpos[0] = nextMove;
 				this.p=newpos;
-			}
 		}
 		}
 	}
-	public boolean validMove(String move, Board g, Body head)
+	public boolean validMove(String move, Board g)
 	{
+		if
 		if(move.equals("w")&&(this.p[0].getY()==0))
 		{
 			return false;
@@ -68,9 +79,26 @@ public class Body {
 		{
 			return false;
 		}
+		if(move.equals("w")&&(this.p[1].getY()==this.p[0].getY()+1))
+		{
+			return false;
+		}
+		if(move.equals("s")&&(this.p[1].getY()==this.p[0].getY()-1))
+		{
+			return false;
+		}
+		if(move.equals("a")&&(this.p[1].getX()==this.p[0].getX()-1))
+		{
+			return false;
+		}
+		if(move.equals("d")&&(this.p[1].getX()==this.p[0].getX()+1))
+		{
+			return false;
+		}
+		else return true;
 	}
 	public Position[] getPositions()
 	{
-		return this.p;
+		return this.p; 
 	}
 }
