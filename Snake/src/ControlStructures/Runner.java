@@ -13,18 +13,28 @@ public class Runner {
 					+ " The snake moves by standard WASD motion. To stop at any point, simply type exit.\n"
 					+ " Please enter a board size (ONLY ENTER AN INTEGER VALUE) and prepare to play."
 						           );
-			Position[] p = new Position[1];
-			p[0] = new Position(0, 0, false);
 			int size = in.nextInt();
+			Position[] p = new Position[2];
+			p[0] = new Position(size/2, size/2, false); //initializes with body size 2 to prevent index out of bound errors
+			p[1] = new Position(size/2 - 1, size/2, false);
 			in.nextLine(); //remove hanging new line
 			Board game = newBoard(size, size);
 			Body b = new Body(p);
 			System.out.println("Type play when you are ready to begin. Type end game to end at any time.. Good luck!");
+			
+			game.printBoard(b);
+
 			while(!call.equals("end game"))
 					{
-				        game.printBoard(b);
 						call = in.nextLine();
-				        b.moveBody(call, game);
+				        if(b.validMove(call, game))
+				        	{
+				        		b.moveBody(call, game);
+				        	}
+				        else
+				        {
+				        	System.out.println("Invalid move, please choose a valid move");
+				        }
 						game.printBoard(b);
 					}
 		
@@ -33,10 +43,10 @@ public class Runner {
 		in.close();
 	}
 	
-	public static Board newBoard(int x, int y)
+	public static Board newBoard(int x, int y) //create a new playspace
 	{
 		Position[][] p = new Position[y][x];
-		for(int iy = 0; iy<y; iy++)
+		for(int iy = 0; iy<y; iy++)           //initialize all the positions with their respective coordinate values
 		{
 			for(int ix = 0; ix<x; ix++)
 			{
@@ -47,7 +57,7 @@ public class Runner {
 		return board;
 	}
 	
-	public static int indexPosition(Position j, Position[] k )
+	public static int indexPosition(Position j, Position[] k ) //return the location of a position given a body
 	{
 		for(int i = 0; i<k.length; i++)
 		{

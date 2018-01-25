@@ -26,10 +26,6 @@ public class Board {
 	{
 		return (this.space).length;
 	}
-	public void fillBoard(Board  b)
-	{
-		
-	}
 	public Position[][] getBoard()
 	{
 		return this.space;
